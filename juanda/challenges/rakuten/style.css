@@ -1,0 +1,64 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  color: #fff;
+  font-family: NotoSans-Regular,Arial,sans-serif;
+  background-color: #101010;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: auto;
+  background: green;
+  border-bottom: 1px solid white;
+}
+
+.nav-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 1680px;
+  margin: 0 auto;
+  border: 1px solid blue;
+}
+
+.nav-items .nav-logo {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.nav-items .nav-logo .logo-rakuten .logo-img {
+  background: url("./rakuten-logo.JPG");
+  width: 1rem;
+  height: in;
+}
+
+.nav-items .nav-menu .nav-menu-list {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+/*# sourceMappingURL=style.css.map */
