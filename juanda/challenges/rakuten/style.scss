@@ -8,8 +8,11 @@
 }
 body{
     color: #fff;
-    font-family: NotoSans-Regular,Arial,sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     background-color: #101010;
+}
+ul{
+    list-style: none;
 }
 .nav{
     position: fixed;
@@ -19,36 +22,61 @@ body{
     height: auto;
     background: green;
     border-bottom: 1px solid white ;
-}
-.nav-items{
-    display: flex;
-    position: relative;
-    flex-wrap: nowrap;
-    align-items: center;
-    max-width: 1680px;
-    margin: 0 auto;
-    border: 1px solid blue;
-
-        .nav-logo{
-            margin: 0;
-            padding: 0;
-            border: 0;
-                .logo-rakuten{
-
-                        .logo-img{
-                            background: url("./rakuten-logo.JPG");
-                            width: 1rem;
-                            height: in;
+    padding-left: 1%;
+    padding-right: 1%;
+    .nav-items{
+        display: flex;
+        position: relative;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        max-width: 1680px;
+        margin: 0 auto;
+        border: 1px solid blue;
+        text-transform: uppercase;
+            .box-logo-menu{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                width: 100%;
+                .nav-logo{
+                    margin: 0;
+                    padding: 0;
+                    border: 0;
+                }
+                .nav-menu{
+                
+                        .nav-menu-list{
+                            display: flex;
+                            flex-direction: row;
+                            
+                            li{
+                                padding-left: 1rem;
+                                padding-right: 1rem;
+                            }
                         }
                 }
+                
             }
-        .nav-menu{
-                .nav-menu-list{
-                    list-style: none;
+            .nav-user{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content:flex-end;
+                .nav-user-list{
                     display: flex;
                     flex-direction: row;
-                    
+                    li{
+                        padding-right: 1.3rem;
+                        padding-left: 1rem;
+                    }                
                 }
-
-        }
+            }
+    }
+}
+.input-nav-search{
+    content: '\e61e';
+    top: calc(50% - 12px);
+    left: 10px;
+    font-family: Glyphs;
 }
