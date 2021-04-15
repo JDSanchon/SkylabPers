@@ -1,0 +1,54 @@
+*, 
+*::after, 
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{
+    color: #fff;
+    font-family: NotoSans-Regular,Arial,sans-serif;
+    background-color: #101010;
+}
+.nav{
+    position: fixed;
+    top:0;
+    right: 0;
+    left: 0;
+    height: auto;
+    background: green;
+    border-bottom: 1px solid white ;
+}
+.nav-items{
+    display: flex;
+    position: relative;
+    flex-wrap: nowrap;
+    align-items: center;
+    max-width: 1680px;
+    margin: 0 auto;
+    border: 1px solid blue;
+
+        .nav-logo{
+            margin: 0;
+            padding: 0;
+            border: 0;
+                .logo-rakuten{
+
+                        .logo-img{
+                            background: url("./rakuten-logo.JPG");
+                            width: 1rem;
+                            height: in;
+                        }
+                }
+            }
+        .nav-menu{
+                .nav-menu-list{
+                    list-style: none;
+                    display: flex;
+                    flex-direction: row;
+                    
+                }
+
+        }
+}
