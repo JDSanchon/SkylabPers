@@ -1,0 +1,49 @@
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: white;
+}
+body{
+    
+    font-family: 'Antonio', sans-serif;
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    .header{
+        background-color: grey;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .control_panel{
+            width: 40vw;
+            height: 3vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            button{
+                cursor: pointer;
+                padding: 10px 3vw;
+                border-radius: 5px;
+                border:none;
+                background-color:#33FFD1 ;
+            }
+        }
+    }
+    .bodier{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        #screen{
+            border: 1px solid white;
+            
+        }
+    }
+}
