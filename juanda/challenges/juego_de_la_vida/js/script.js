@@ -22,9 +22,9 @@ function tableroInicial(){
 function checkearArray (posX,posY,valor){
     let sum;
     for(let i=-1 ; i<2 ; i++){
-        for(let j=-1 ; j<2 ;j++){   
+        for(let j=-1 ; j<2 ;j++){
             if((blinker[i][j])===1){
-                sum += 1;    
+                sum += 1;
             }else{
 
             }
@@ -42,129 +42,124 @@ function recorrerArray(){
 */
 
 const board = document.getElementById('board');
-let celdas = document.getElementsByClassName("col");
-
-const totalRow = 3;
-const totalColumn = 3;
-
-function hiddenArray(){
-   let hiddenarray = new Array(totalRow);
-    for(let i = 0; i < totalRow ; i++){
-        hiddenarray[i] = new Array(totalColumn);
+const celdas = document.getElementsByClassName('col');
+const totalRow = 5;
+const totalColumn = 5;
+function hiddenArray() {
+  const hiddenarray = new Array(totalRow);
+  for (let i = 0; i < totalRow; i++) {
+    hiddenarray[i] = new Array(totalColumn);
+  }
+  return hiddenarray;
+}
+function emptyArray(hiddenAr) {
+  const table = hiddenAr;
+  for (let i = 0; i < totalRow; i++) {
+    for (let j = 0; j < totalColumn; j++) {
+      table[i][j] = 0;
     }
-    return hiddenarray;
+  }
+  return table;
 }
 
-function emptyArray (hiddenAr){
-    let table = hiddenAr;
-    for(let i = 0; i<totalRow ; i++){
-        for(let j = 0; j<totalColumn ; j++){
-            table[i][j] = 0;
-        }
+function createBoard(arr) {
+  const arr1 = arr;
+  for (let i = 0; i < totalRow; i++) {
+    const row = document.createElement('div');
+    row.classList.add('row');
+
+    for (let j = 0; j < totalColumn; j++) {
+      const col = document.createElement('div');
+      col.classList.add('col');
+      col.classList.add('hidden');
+      col.id = `${i.toString()}-${j.toString()}`;
+      row.appendChild(col);
+
+      // row.textContent('1');
     }
-    return table;
+    board.appendChild(row);
+  }
+  $('.col').click(function () {
+    const posicion = this.id.split('-');
+    arr1[parseInt(posicion[0])][parseInt(posicion[1])] = 1;
+    $(this).css('background-color', 'red');
+  });
+  return arr1;
 }
+const world = createBoard(emptyArray(hiddenArray()));
 
-function createBoard (arr){
-    let arr1 = arr;
-    for(let i=0 ; i<totalRow ; i++){
-        const row = document.createElement('div');
-        row.classList.add('row');
-        
-        for(let j=0 ; j<totalColumn ; j++){
-            const col = document.createElement('div');
-            col.classList.add('col');
-            col.classList.add('hidden');
-            col.id = i.toString()+ "-" + j.toString();
-            row.appendChild(col);
-            
-           // row.textContent('1');
-        }
-        board.appendChild(row);
-    } 
-    $(".col").click(function(){
-        let posicion = this.id.split("-");
-        arr1[parseInt(posicion[0])][parseInt(posicion[1])] = 1;
-        $(this).css("background-color","red");
-    });
-    return arr1;
-}
-let world = createBoard(emptyArray(hiddenArray()));
-
-function iniciar(){
+function iniciar() {
 
 }
 
+function checkLife(algo) {
+  for (let i = 0; i < totalRow; i++) {
+    for (let j = 0; j < totalColumn; j++) {
+      //    if(algo[i][j]===0 && checkNearby(i,j)===3){
+      //        world[i][j] = 1;
+      //    }
+      //    if(algo[i][j]===1 && (checkNearby(i,j) < 2 || checkNearby(i,j) > 3)){
+      //        world[i][j] = 0;
+      //    }
+      //    if(algo[i][j]===1 && (checkNearby(i,j) === 2 || checkNearby(i,j) === 3)){
+      //        world[i][j] = 1;
+      //    }
+      const nearby = checkNearby(i, j);
 
-function checkLife(algo){
-    
-    for(let i = 0; i<totalRow ; i++){
-        for(let j = 0; j<totalColumn ; j++){
-        //    if(algo[i][j]===0 && checkNearby(i,j)===3){
-        //        world[i][j] = 1;
-        //    }
-        //    if(algo[i][j]===1 && (checkNearby(i,j) < 2 || checkNearby(i,j) > 3)){
-        //        world[i][j] = 0;
-        //    }
-        //    if(algo[i][j]===1 && (checkNearby(i,j) === 2 || checkNearby(i,j) === 3)){
-        //        world[i][j] = 1;
-        //    }
+      if (algo[i][j] === 1 && (nearby === 2 || nearby === 3)) {
+        world[i][j] = 1;
+      } else if (algo[i][j] === 0 && nearby === 3) {
+        world[i][j] = 1;
+      } else {
+        world[i][j] = 0;
+      }
+    }
+  }
+}
 
-            if (algo[i][j]===1 && (checkNearby(i,j) === 2 || checkNearby(i,j) === 3)) {
-                world[i][j] = 1;
-            }else if (algo[i][j]===0 && checkNearby(i,j)===3) {
-                world[i][j] = 1;
+function life() {
+  const tempWorld = world;
+  checkLife(tempWorld);
+  paint();
+}
+
+function paint() {
+  let aux;
+  for (let i = 0; i < totalRow; i++) {
+    for (let j = 0; j < totalColumn; j++) {
+      aux = `${i.toString()}-${j.toString()}`;
+      if (world[i][j] === 1) {
+        $(`#${aux}`).css('background-color', 'red');
+      }
+      if (world[i][j] === 0) {
+        $(`#${aux}`).css('background-color', '#33FFD1');
+      }
+    }
+  }
+}
+
+function checkNearby(posI, posJ) {
+  let nearby = 0;
+  for (let i = posI - 1; i < posI + 2; i++) {
+    for (let j = posJ - 1; j < posJ + 2; j++) {
+      if (i >= 0 && i < totalRow) {
+        if (j >= 0 && j < totalColumn) {
+          if (world[i][j] === 1) {
+            if (i === posI && j === posJ) {
+
             } else {
-                world[i][j] = 0;
+              nearby++;
             }
+          }
         }
+      }
     }
+  }
+  return nearby;
 }
 
-function life(){
-    let tempWorld = world;
-    checkLife(tempWorld);
-    paint();
-}
-
-function paint(){
-    let aux;
-    for(let i = 0; i<totalRow ; i++){
-        for(let j = 0; j<totalColumn ; j++){
-            aux = i.toString()+ "-" + j.toString();
-            if(world[i][j]=== 1){
-                $(`#${aux}`).css("background-color","red");
-            }
-            if(world[i][j]=== 0){
-                $(`#${aux}`).css("background-color","#33FFD1");
-            }
-        }
-    }
-}
-
-function checkNearby(posI,posJ){
-    
-    let nearby = 0;
-    for(let i = posI-1; i<posI+2 ; i++){
-        for(let j = posJ-1; j<posJ+2 ; j++){
-            if(i >= 0 && i<totalRow){
-                if(j >=0 && j<totalColumn){
-                    if(world[i][j]===1){
-                        if(i === posI && j === posJ){
-                            
-                        }else{
-                            nearby++;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    return nearby;
-}
-
-setInterval("life()",10000);
-/*function changecolor (){
+setInterval('life()', 10000);
+/* function changecolor (){
     const cambiocolor = element => {s
         element.target.style.backgroundColor = 'red';
     }
@@ -173,17 +168,14 @@ setInterval("life()",10000);
             alert ("has tocado algo");
         });
     });
-}*/
+} */
 
+// createBoard(emptyArray(hiddenArray()));
 
-//createBoard(emptyArray(hiddenArray()));
-
-
-//let divs = document.querySelectorAll(".grid-item");
-//const changeBackgroundColor = e => {
+// let divs = document.querySelectorAll(".grid-item");
+// const changeBackgroundColor = e => {
 // e.target.style.backgroundColor = "red";
 // }
-//divs.forEach(div => {
+// divs.forEach(div => {
 // div.addEventListener("click", changeBackgroundColor, {once: true});
-//})
-
+// })
