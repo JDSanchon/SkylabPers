@@ -17,12 +17,13 @@ header.appendChild(list);
 main.appendChild(header);
 //bodier here
 let bodier = document.createElement('bodier');
+bodier.setAttribute('id','bodier');
 let subhead = document.createElement('h3');
 subhead.innerText = "top heroes";
 let body = document.querySelector('body');
 body.appendChild(bodier);
 bodier.appendChild(subhead);
-fourDashboard(then.fetchHeros(),bodier);
+//fourDashboard(then.fetchHeros(),bodier);
 /*
 showHeroMess().forEach((elem) => {
     let li = document.createElement('li');

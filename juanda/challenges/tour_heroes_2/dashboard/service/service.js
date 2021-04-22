@@ -2,18 +2,50 @@ const header_nav_elem = [
     {name: "dashboard",url: ""},
     {name: "heroes",url: ""},
 ];
-function fetchHeros(){
+function fetchHeros(randomPos){
     return fetch('./service/superHeroData.json')
     .then ((response)=>{
         return response.json();
     })
     .then(data => {
-       return data;
+        showRandomHeroes(data[randomPos]);
     })
 }
+function takeRandomHeroes (){
+    let first = Math.round(Math.random()*563);
+    let second = Math.round(Math.random()*563);
+    let third  = Math.round(Math.random()*563);
+    let fourth = Math.round(Math.random()*563);
+    let randomNumbers = new Array
+    randomNumbers.push(first,second,third,fourth);
+    randomNumbers.forEach(element => {
+        fetchHeros(element);
+    });
+}
 
+function showRandomHeroes(data){
+    debugger
+    let bodier = document.getElementById('bodier');
+    
+    let ul = document.createElement('ul');
+   
+        let li = document.createElement('li');
+        let a = document.createElement('a');
+        a.href = `${data.name}`;
+        a.innerText=`${data.name}`;
+        li.appendChild(a);
+        ul.appendChild(li);
+   
+    bodier.appendChild(ul);
+}
 
+takeRandomHeroes();
 
+/*
+fetchHeros().then(fetchHeros().forEach(element => {
+    console.log(element);
+}));
+/*
 function fourDashboard(numOfHero,parentElement){
     let ulList = document.createElement('ul');
     let padre = document.querySelector(parentElement);
@@ -25,7 +57,7 @@ function fourDashboard(numOfHero,parentElement){
         ulList.appendChild(listHero);
     });
     padre.appendChild(ulList);    
-}/*
+}
 function createHeroesList(heroes) {
     const navigationList = document.createElement('ul');
     navigationList.setAttribute('id', 'heroes-list');
