@@ -11,13 +11,36 @@ function fetchHeros(){
        return data;
     })
 }
-fetchHeros().then(respuesta => respuesta.forEach(element => {
-    let array = [];
-    array.push(element);
-    return array;
-}));
 
-/*
+
+
+function fourDashboard(numOfHero,parentElement){
+    let ulList = document.createElement('ul');
+    let padre = document.querySelector(parentElement);
+    numOfHero.forEach((hero) => {
+        let listHero = document.createElement('li');
+        let linkHero = document.createElement('a');
+        linkHero.innerText = `${hero.name}`;
+        listHero.appendChild(linkHero);
+        ulList.appendChild(listHero);
+    });
+    padre.appendChild(ulList);    
+}/*
+function createHeroesList(heroes) {
+    const navigationList = document.createElement('ul');
+    navigationList.setAttribute('id', 'heroes-list');
+    document.body.appendChild(navigationList);
+    heroes.forEach((hero) => {
+      const eachHero = document.createElement('li');
+      eachHero.setAttribute('id', `${hero.name}`);
+      const link = document.createElement('a');
+      const name = document.createTextNode(`${hero.id} ${hero.name}`);
+      eachHero.appendChild(link);
+      link.appendChild(name);
+      document.body.appendChild(eachHero);
+      link.href = `./../details/details.html?heroid=${hero.id}`;
+    });
+  }
 function showHeroMess(array) {
     let heroMess = array.sort(function() {
             return Math.random() - 0.5});
