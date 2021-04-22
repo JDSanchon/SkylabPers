@@ -1,0 +1,140 @@
+IMPORTANTE: entender como crear y consumir promesas.
+
+presentacional / contenedor
+
+la estructura para proyectos:
+> scripts (dentro de carpeta tour de heroes : la carpeta scripts y el html)
+   (carpeta)store --aqui todo el material, como por ejemplo el json
+   (carpeta)service --aqui tratar de incluir todas las funciones
+   (carpeta)components --el punto donde se deberia mostrar todos los createElements y demás.
+  index.html
+
+en el html metemos todos los scripts, tras el body, con el orden:store,service,components
+emtemos otro scrupt que sea:
+
+<script>
+  let test;
+  windows.onload = fucntion(){ --> esto es por si no se pusiera en orden los scripts
+    
+    console.log('todo cargado')
+    test = getpokeApiData();
+  }
+</script>
+ Dentro del body tenemos un
+                  main id ='main'
+                      <ul id="pokelist"></ul>
+                  /main
+
+
+en service.js______________________
+  async fucntion getpokeApiData = (url = `metesaquilaURLyañades?limit=${store.rowsPercall}&offset{store.currentIndex}`){
+    let qty =10
+    let current = 0
+    return await fetch(url)
+      .then((response) => {
+          if(respones.ok){
+            return response.json()
+          }else{
+            throw new error('something has failed',response.Error);
+          }
+        
+        })
+        .then (response.json => {
+          pokemainMainData = response.json();
+          return pokemonMainData.results;
+        })
+        .catch(error => console.log(error));
+  }
+
+  fucntion getUrlPara(url=null, param){
+    let valueToSearch = url ? url : location.search;
+    let param = new URLSearchParams(window)
+  }
+
+en store.js______________________
+
+      let pokemainMainData = null;
+      let store ={
+        previous : "",
+        next : "",
+        pokemons : null,
+        rowsPercall : 10,
+        currentIndex : 0
+      };
+      
+      pokemainMainData = fetchListFromService();
+
+      function fetchListFromService (url){
+        getpokeApiData().then(({previous,next,result}) => {
+        setEnv(previous,next,result) 
+      });
+      }
+
+      fucntion setEnv(previous,next,data){
+        store = {
+          previous : previous,
+          next : next,
+          pokemons : data,
+        }
+        initialContent(data)
+      }
+  function initialContent (data){
+    drawPokeList (data,'pokelist');
+  }
+      
+
+en component.js______________________
+
+      function createHtmlNode (node,content,atribute,attributevalue,className, a=null){
+        let newNode = document.createElement(node);
+        newNode.innerText = content;
+        newNode.setAttribute(atribute,attributevalue);
+        newNode.classname = className;
+        if(a){
+          newNode.a = a; //a es un <a>. si a existe, entonces
+        }
+        return newNode;
+       
+      }
+
+      function drawHtml (data,selector) => {
+        let appender = documnet.getELementById(selector);
+        appender.innerHTML = '' //esto sobreescribre lo q hubiera, por lo que se usa para borrar
+        data.foreach(pokemonData=>{
+          let newNode = createHtmlNode('li','', 'id', `${pokemonData.name}--`pokemonData.name, 'pokelist_list-item');
+            let innerNode = createHtmlNode('a',pokemonData.url, 'id', pokemonData.name, 'pokelist_list-item', pokemonData.url);
+            newNode.append(innerNode)
+          appender.append(newNode);
+        })
+      }
+
+      fucntion drawPokeList(data){
+        let pokelistNodeContainer = getTagContainer('pokelist','ul');
+        document.getELementById('main').append(pokelistNodeContainer);
+        drawHtml(data,'pokelist);
+
+        let prevButton = createHtmlNode('button','previous','id','pokelist-prev-button','button button-previous');
+        prevButton.classList.add( !store.previous && 'button-disabled'); //ese && es un IF sin else
+        let nextButton = createHtmlNode('button','next','id','pokelist-next-button','button button-previous');
+        nextButton.classList.add( !store.next && 'button-disabled');
+        nextButton.setAttribute('onclick',paginate(store.previous)); // botones q apuntan a una direccion pasada por parametro, tras clicas.
+        nextButton.setAttribute('onclick',paginate(store.next));
+        nextButton.onclick = (() => paginate(store.previous));
+        nextButton.onclick = (() => paginate(store.next));
+
+        pokelistNodeContainer.append(prevButton);
+        pokelistNodeContainer.append()
+      }
+
+      function getTagContainer(idReferer,tagname){
+        let node= document.getELementById(idReferer) ? 
+        document.getELementById(idReferer):
+        document.createElement(tagname);
+        node.setAttribute('id',idReferer);
+
+        return node;
+
+      }
+      function paginate(url){
+        pokemainMainData (url);
+      }
