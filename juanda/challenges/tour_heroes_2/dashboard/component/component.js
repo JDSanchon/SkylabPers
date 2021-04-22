@@ -22,7 +22,8 @@ subhead.innerText = "top heroes";
 let body = document.querySelector('body');
 body.appendChild(bodier);
 bodier.appendChild(subhead);
-let fourthTop = document.createElement('ul');/*
+fourDashboard(then.fetchHeros(),bodier);
+/*
 showHeroMess().forEach((elem) => {
     let li = document.createElement('li');
     li.classList.add(`nav_list`);
@@ -32,4 +33,3 @@ showHeroMess().forEach((elem) => {
     li.appendChild(a);
     fourthTop.appendChild(li);
 })*/
-bodier.appendChild(fourthTop);
