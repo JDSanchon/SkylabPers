@@ -26,4 +26,8 @@ Promesa = objeto q represneta la eventual resolucion o fallo de una determinada 
     Como se crea una promes? new Promise
     const promiseA = new Promise(myexecutorFunc)
     const promiseB = promiseA.then(handlefulled1,handleReject1)
+
+
+    cuando en un fetch, en la primera promesa afirmativa .then, retornamos el result.json(), lo que hacemos es pasar la 
+    promesa q se devuelve en un json en luegar de seguir siendo una promesa.
     
