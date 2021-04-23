@@ -1,0 +1,23 @@
+
+
+
+3.npx eslint --init
+contesdtas las pregunta
+
+dentro del package json (on save)
+"jest --watchAll --collect-coverage"
+
+4.mkdir src
+5.Generar 3 carpetas : heroes, heroes details, dashboard
+6.Dentro de heroes, generamos el heroes.html y los scripts (hereos.js)
+
+
+haya donde tengamos los ficheros... html, js... todos juntos, recibiran el nombre de ..
+
+noombreX.services.js --> funciones que manipulan datos
+            -->recordemos el uso del dectrusting para cuando trabajemos con 
+nombreX.component.js -->exploramos que esta pasando con el html
+nombreX.store.js --> donde almacenamos los datos
+
+para cargar los scritps, el orden deberia ser primero el store, seguido del service, seguido del component
+

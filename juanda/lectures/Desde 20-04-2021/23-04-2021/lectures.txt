@@ -1,0 +1,29 @@
+Promesa = objeto q represneta la eventual resolucion o fallo de una determinada operacion asincrona.
+    on succes |.then
+    on reject |.catch
+
+    dentro de ese objeto tendremos el estado del objeto de la promesa, ademas del valor. y podremos pasar que hacer cuando se resuelva
+    o no.
+
+    Una promesa nos permite acceder a un valor que no conocemos en el momento de realizar la promesa.
+    Cuando se crea una promesa, se crea con el estad pendiente... y solo tiene dos caminos posibles.. o se resuelve o se rechaza
+    Desde la programacion podemos ofrecer una funcion que se ejecute cuando se resuelve, o una funcion cuando se rechaze.
+                            -->async actions
+            ->fulfil .then(on fullfilement)   -->return-->              .then()
+    promis  ->reject .then (...,onRejecetion) -->return--> promise -->  .catch()
+                     .catch (onRejecetion)
+                            -->error handing
+
+    si la promesa se reusleve .then primerargunmetno una funcion y se hace X
+    si se rechaza, catch y se pasa la funcion.
+
+    sIEMPRE estara en 1 de 3 estados. Pendiente, completado (sin reacciones y con exito), rechazada(operacion fail)
+    para concatenar una pro,esa se usan 3 metodos .then, .catch
+
+    creo una promesa, lo q llega en el .them, si retorno el valor, se genera uan nueva promesa que ira al siguiente, y a la siguiente..
+    etc.. hasta que falla (catch)
+
+    Como se crea una promes? new Promise
+    const promiseA = new Promise(myexecutorFunc)
+    const promiseB = promiseA.then(handlefulled1,handleReject1)
+    
