@@ -22,19 +22,20 @@ function takeRandomHeroes (){
         fetchHeros(element);
     });
 }
+function creatheroDash(elementPater,objUl,objLi,objA,data){
+
+}
+
 
 function showRandomHeroes(data){
-    debugger
     let bodier = document.getElementById('bodier');
-    
     let ul = document.createElement('ul');
-   
-        let li = document.createElement('li');
-        let a = document.createElement('a');
-        a.href = `${data.name}`;
-        a.innerText=`${data.name}`;
-        li.appendChild(a);
-        ul.appendChild(li);
+    let li = document.createElement('li');
+    let a = document.createElement('a');
+    a.href = `${data.name}`;
+    a.innerText=`${data.name}`;
+    li.appendChild(a);
+    ul.appendChild(li);
    
     bodier.appendChild(ul);
 }
