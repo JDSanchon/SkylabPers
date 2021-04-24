@@ -19,3 +19,6 @@ for(let i = 0 ; i< listOfHeroes.length; i++){
 */
 //create = add, read=mostrar , update=modifica..q parte?, delete =elimina
 let navList = ["Create","Read","Update","Delete"]
+let state = {
+    tasks:[],
+};

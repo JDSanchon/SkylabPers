@@ -1,9 +1,13 @@
-let bodier = document.querySelector('bodier')
+let sectionTop = document.getElementById('subheader');
 let nav = document.createElement('nav');
-let ul = document.createElement('ul');
-let li = document.createElement('li'); //redundancia--borrar
+let button = document.createElement('button');
+let bodier = document.getElementById('bodier')
 
 
 //navList = 4 nombres para el subtitulo
 //li se debe generar de nuevo en el cuerpo de la funcion, mejor borrar aqui
-listToDo(bodier,nav,ul,li,navList);
+listToDo(sectionTop,nav);
+
+
+
+
