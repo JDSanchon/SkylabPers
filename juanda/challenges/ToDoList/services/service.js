@@ -19,7 +19,6 @@ function createForm(elemParent){
     btnform.setAttribute('type','submit');
     btnform.classList.add('button-form');
     btnform.innerText='Enviar';
-    btnform.setAttribute('onclick',addData());
     form.appendChild(inputform);
     form.appendChild(btnform);
     elemParent.appendChild(form);
@@ -36,6 +35,11 @@ function addData(){
 function btncreate(){
     let bodi = document.getElementById('bodier');
     createForm(bodi);
+    let formulario = document.querySelector('form');
+    formulario.addEventListener('submit', event =>{
+        event.preventDefault();
+        console.log(event.target.querySelector('input').value);
+    })
 }
 function btnread(){
     console.log("Read");
@@ -45,25 +49,4 @@ function btnupdate(){
 }
 function btndelete(){
     console.log("Delete");
-}
-
-function dispatcher (opcion){
-    switch (opcion) {
-        case btnread: 
-                btnread()
-            break;
-        case btnread:
-                btnread()
-            break;
-        case btnupdate:
-                btnupdate()
-            break;
-
-        case btndelete:
-                btndelete()
-            break;
-    
-        default:
-            break;
-    }
 }

@@ -1,7 +1,7 @@
 let sectionTop = document.getElementById('subheader');
 let nav = document.createElement('nav');
 let button = document.createElement('button');
-let bodier = document.getElementById('bodier')
+let bodier = document.getElementById('bodier');
 
 
 //navList = 4 nombres para el subtitulo
