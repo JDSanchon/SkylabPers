@@ -1,0 +1,35 @@
+info para estilar los alerts.
+
+materials iu react. --> alert 
+get bootsrap 3 -->componentes > alert
+
+NOTA: por ahora usar solo como idea, no emplear las librerias.
+
+REACT FUNDAMENTS
+Que es?? libreria js, con arquitectura flux. Creada por facebook.
+reactjs.org --> tutorial
+
+en terminal:
+buscar comando -->
+npx create-react-app 
+
+REACT emplea algo llamado virtual DOM. Algo así como un DOM cargado en memoria
+
+eje: 
+function Hello(props){
+    return <h1>Hello at {props.now}</h1>
+}
+directamente pinta el contenido sin necesidad de tener que hacer todo el innerHTML
+
+OJO.
+RENDERING A COMPONENT
+import ReactDOM from 'react-dom';
+import React from 'react';
+function Hello(props){
+    return <h1>Hello at {props.now}</h1>
+}
+ReactDOM.render (<Hello now={new Date().toISOString()} />, document.getElementById('root))
+
+si el return contiene varias lineas, deberemos ponerlo entre parentesis.
+
+npx create-react-app my-app
