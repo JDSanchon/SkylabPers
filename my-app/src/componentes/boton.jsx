@@ -1,9 +1,15 @@
+import { useState } from "react"
+
+const [count,setcount]= useState(10)//entre () se le puede indicar donde empezar.
+//count = primera posicion se almacena el valor
+//setcount = forma para actualizar el valor del contador
+
 
 const Clicker = () => (
     <div>
-        <button onClick ={ () =>{alert("La cagasteeeeee, boton 1!!!!!") }} >BOTON1</button>
-        <button onClick ={ () => {alert("La cagasteeeeee, boton 2!!!!!")}} >BOTON2</button>
-        <button onClick ={ () => {alert("La cagasteeeeee, boton 3!!!!!")}} >BOTON3</button>
+        <p>{count}</p>
+        <button onClick ={ () =>{ setcount(count +1) }} >AÑADIR</button>
+        <button onClick ={ () =>{ setcount(count -1) }} >RESTAR</button>
     </div>
     )
    
