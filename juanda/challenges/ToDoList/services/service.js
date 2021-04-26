@@ -1,5 +1,5 @@
 // FIXME: this function name is dooming humanity
-
+/*
 function menuCreator (elemParent,navigation){
     elemParent.appendChild(navigation);
     navList.forEach(namebtn => {
@@ -20,7 +20,7 @@ function newNode (nameOfNode,classOfNode,attributType,nameOfAttribute){
     nameOfNode.classList.add(classOfNode);
     nameOfNode.setAttribute(attributType,nameOfAttribute)
 }
-*/
+
 
 
 
@@ -86,3 +86,4 @@ function handleButton(actionType) {
 
     }
 }
+*/
