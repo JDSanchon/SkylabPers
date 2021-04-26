@@ -16,7 +16,7 @@ YA QUE EN ESTE PUNTO, listofheroes AUN NO CONTIENE NADA.
 for(let i = 0 ; i< listOfHeroes.length; i++){
     console.log(listOfHeroes[i]);
 }
-*/
+
 //create = add, read=mostrar , update=modifica..q parte?, delete =elimina
 let navList = ["Create","Read","Update","Delete"]
 basicActionTypes = {
@@ -28,3 +28,4 @@ basicActionTypes = {
 let state = {
     tasks:[],
 };
+*/
